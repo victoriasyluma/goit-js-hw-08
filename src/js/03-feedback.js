@@ -19,7 +19,7 @@ email.value = formData.email;
 message.value = formData.message;
 
 // store management
-const throttleSetItem = throttle(() => {
+const scheduleUpdateLocalStorage = throttle(() => {
   const itemToStore = JSON.stringify(formData);
 
   localStorage.setItem(LOCAL_KEY, itemToStore);
@@ -28,7 +28,7 @@ const throttleSetItem = throttle(() => {
 const partialUpdateFormData = (partialUpdate) => {
   formData = { ...formData, ...partialUpdate };
 
-  throttleSetItem();
+  scheduleUpdateLocalStorage();
 };
 
 const onEmailInput = (event) => {
